@@ -112,7 +112,7 @@ testMethod(param: 2.5,
 Use trailing closure syntax also if a closure is the only parameter:
 
 ```swift
-	array1.map { // content }
+	array1.map { /* content */ }
 ```
 
 Only use self.<parameter name> if you need to, which is when you have a parameter of the same name as the instance variable, or in closures:
