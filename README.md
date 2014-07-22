@@ -80,7 +80,7 @@ doSomethingWithCompletion() { param1 in
 If declaring a variable with its type, place the colon directly after the identifier with a space and then the type:
 
 ```swift
-	class var testVar: String
+class var testVar: String
 ```
 
 Always use trailing closure syntax if a closure is the last parameter of a method:
