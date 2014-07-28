@@ -3,7 +3,7 @@ Official SlideShare Swift Style Guide
 
 ###This is the SlideShare Swift Style Guide we are using for our upcoming iOS 8 only app written in Swift. Please feel free to submit pull requests, so that this may be helpful for anyone else starting with Swift.
 
-Use spaces for tabs and 2 spaces per tab (Change the default in Xcode->Preferences->Text Editing->Indentation)
+Use spaces for tabs and 4 spaces per tab (Change the default in Xcode->Preferences->Text Editing->Indentation)
 
 Switch statements should have each case statement not indented and all code executed for that case indented below:
 
