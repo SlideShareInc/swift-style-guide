@@ -162,7 +162,7 @@ array += 4
 When unwrapping optionals, rebind the optional to the same name, unless there is a reason not to
 ```swift
 let bike = possibleBike() // this returns an optional
-If let bike = bike {
+if let bike = bike {
 // do something with bike
 }
 ```
