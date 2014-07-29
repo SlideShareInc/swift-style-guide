@@ -158,3 +158,11 @@ When appending to an Array or String, always use the += operator instead of the 
 var array = [1, 2, 3]
 array += 4
 ```
+
+When unwrapping optionals, rebind the optional to the same name, unless there is a reason not to
+```swift
+let bike = possibleBike() // this returns an optional
+If let bike = bike {
+// do something with bike
+}
+```
