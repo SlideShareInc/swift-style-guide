@@ -137,7 +137,7 @@ Implement a singleton by having this at the top of your class definition:
 
 ```swift
 class ClassA {
-	func sharedInstance() -> ClassA {
+	class func sharedInstance() -> ClassA {
     	struct Static {
       		static let instance = ClassA()
     	}
