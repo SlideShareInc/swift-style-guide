@@ -152,17 +152,18 @@ When declaring dictionary types, include a space before after the key type and a
 var someDictionary: [String : Int]
 ```
 
-When appending to an Array or String, always use the += operator instead of the append method. Likewise, if you are creating a custom colleciton, overload the += operator to support appending.
+When appending to an Array or String, always use the append method instead of the += operator.
 
 ```swift
 var array = [1, 2, 3]
-array += 4
+array.append(4)
 ```
 
-When unwrapping optionals, rebind the optional to the same name, unless there is a reason not to
+When unwrapping optionals, rebind the optional to the same name, unless there is a reason not to. This is example shows this, but in this case it should be done within the binding.
+
 ```swift
 let bike = possibleBike() // this returns an optional
 if let bike = bike {
-// do something with bike
+	// do something with bike
 }
 ```
