@@ -127,7 +127,7 @@ testMethod(param: 2.5,
 array1.map { /* content */ }
 ```
 
-If declaring the type of a function or closure with no return type, specify this by using () as the return type. Also, put a space before and after -> when declaring a closure type:
+- If declaring the type of a function or closure with no return type, specify this by using () as the return type. Also, put a space before and after -> when declaring a closure type:
 
 ```swift
 func takeClosure(aClosure: () -> ()) {
@@ -135,7 +135,7 @@ func takeClosure(aClosure: () -> ()) {
 }
 ```
 
-If creating a function or closure with no return type, do not specify one:
+- If creating a function or closure with no return type, do not specify one:
 
 ```swift
 func noReturn() {
