@@ -43,18 +43,18 @@ var computedProp: String {
 }
 ```
 
-- If making a computed variable that is readwrite, have get {} and set{} not indented:
+- If making a computed variable that is readwrite, have get {} and set{} indented:
 
 ```swift
 var computedProp: String {
-get {
-	if someBool {
-    	return "Hello"
-  	}
-}
-set {
-  	println(newValue)
-}
+	get {
+		if someBool {
+	    	return "Hello"
+	  	}
+	}
+	set {
+	  	println(newValue)
+	}
 }
 ```
 
@@ -62,12 +62,12 @@ set {
 
 ```swift
 var property = 10 {
-willSet {
-	println("willSet")
-}
-didSet {
-	println("didSet")
-}
+	willSet {
+		println("willSet")
+	}
+	didSet {
+		println("didSet")
+	}
 }
 ```
 
@@ -75,14 +75,16 @@ didSet {
 
 ```swift
 var property = 10 {
-willSet {
-	if newValue == 10 {
-    	println("It’s 10")
- 	}
-didSet {
- 	if oldValue == 10 {
-   		println("It was 10")
- 	}
+	willSet {
+		if newValue == 10 {
+	    	println("It’s 10")
+	 	}
+	}
+	didSet {
+	 	if oldValue == 10 {
+	   		println("It was 10")
+	 	}
+	}
 }
 ```
 
@@ -95,21 +97,21 @@ doSomethingWithCompletion() { param1 in
 }
 ```
 
-- Always use trailing closure syntax if a closure is the last parameter of a method:
+- Always use trailing closure syntax if there is a single closure as the last parameter of a method:
 
 ```swift
+// Definition
 func newMethod(input: Int, onComplete methodToRun: (input: Int) -> ()) {
 	// content
 }
-```
 
-```swift
+// Usage
 newMethod(10) { param in
 	println("output: \(param)"")
 }
 ```
 
-- However, if there are 2 closures as the last parameters, do not use trailing closure syntax on the last one as this is ambiguous. Also, when creating a closure inline with for a method parameter, put the parameter name on a new line and follow the following indentation rules:
+- However, if there are 2 closures as the last parameters, do not use trailing closure syntax for the last one as this is ambiguous. Also, when creating a closure inline as a method parameter, put the parameter name on a new line and follow the following indentation rules:
 
 ```swift
 testMethod(param: 2.5,
@@ -127,10 +129,10 @@ testMethod(param: 2.5,
 array1.map { /* content */ }
 ```
 
-- If declaring the type of a function or closure with no return type, specify this by using () as the return type. Also, put a space before and after -> when declaring a closure type:
+- If declaring the type of a function or closure with no return type, specify this by using Void as the return type. Also, put a space before and after -> when declaring a closure type:
 
 ```swift
-func takeClosure(aClosure: () -> ()) {
+func takeClosure(aClosure: () -> Void) {
 	// content
 }
 ```
@@ -148,9 +150,18 @@ func noReturn() {
 
 ```swift
 class Test {
-	var a: Int?
-	func foo(a: Int) {
+	
+	var a: (() -> Void)?
+	var b: Int = 3
+	
+	func foo(a: () -> Void) {
 		self.a = a
+	}
+	
+	func foo1() {
+		foo() {
+			println(self.b)
+		}
 	}
 }
 ```
@@ -161,7 +172,7 @@ class Test {
 class var testVar: String
 ```
 
-- When declaring dictionary types, include a space before after the key type and after the colon:
+- When declaring dictionary types, include a space before the key type and after the colon:
 
 ```swift
 var someDictionary: [String : Int]
@@ -172,7 +183,7 @@ var someDictionary: [String : Int]
 
 ```swift
 class ClassA {
-	class func sharedInstance() -> ClassA {
+	class var sharedInstance: ClassA {
     	struct Static {
       		static let instance = ClassA()
     	}
@@ -182,7 +193,7 @@ class ClassA {
 ```
 
 #### Collections
-- When appending to an Array or String, always use the append method instead of the += operator.
+- When appending to an Array or String, always use the append method instead of the += operator. This is because the += operator will not append single elements.
 
 ```swift
 var array = [1, 2, 3]
