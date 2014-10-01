@@ -7,7 +7,7 @@ This is the SlideShare Swift Style Guide we are using for our upcoming iOS 8 onl
 * [Xcode Preferences](#xcode-preferences)
 * [Switch](#switch)
 * [Properties](#properties)
-* [Closures](#closures)
+* [Closures/Functions](#closures-functions)
 * [Identifiers](#identifiers)
 * [Singleton](#singleton)
 * [Collections](#collections)
@@ -181,6 +181,25 @@ func takeClosure(aClosure: () -> Void) {
 ```swift
 func noReturn() {
     // content
+}
+```
+
+- If creating a closure that seems to be large (use your best judgement) do not declare inline; create a local variable.
+
+```swift
+func foo(something: () -> Void) {
+    something()
+}
+
+func doEverything() {
+    let doSomething = {
+        var x = 1
+        for 1...3 {
+            x++
+        }
+        println(x)
+    }
+    foo(doSomething)
 }
 ```
 
