@@ -127,7 +127,7 @@ class Test {
 ```
     Reasoning: When class constants are supported, the way the constant is accessed will not change.
 
-#### Closures
+#### Closures/Functions
 - Do not use parameters when declaring parameter names to use in a closure. Also, keep parameter names on same line as opening brace for closures:
 
 ```swift
