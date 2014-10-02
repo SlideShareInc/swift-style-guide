@@ -7,7 +7,7 @@ This is the SlideShare Swift Style Guide we are using for our upcoming iOS 8 onl
 * [Xcode Preferences](#xcode-preferences)
 * [Switch](#switch)
 * [Properties](#properties)
-* [Closures/Functions](#closures-functions)
+* [Closures](#closures)
 * [Identifiers](#identifiers)
 * [Singleton](#singleton)
 * [Collections](#collections)
@@ -127,7 +127,7 @@ class Test {
 ```
     Reasoning: When class constants are supported, the way the constant is accessed will not change.
 
-#### <a name="#closures-functions"/>Closures/Functions
+#### Closures
 - Do not use parameters when declaring parameter names to use in a closure. Also, keep parameter names on same line as opening brace for closures:
 
 ```swift
