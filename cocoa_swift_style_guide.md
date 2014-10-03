@@ -100,10 +100,10 @@ class AppInitializer {
 var rect = CGRect(x: 10, y: 10, width: 45, height: 300)
 ```
 
-- If you need to make an instance of a struct zeroed out, utilize the <struct name>Zero constant.
+- If you need to make an instance of a struct zeroed out, utilize the class constant.
 
 ```swift
-var zeroRect = CGRectZero
+var zeroRect = CGRect.zeroRect
 ```
 
 #### View Controllers
@@ -115,14 +115,14 @@ class func newInstance() -> MasterViewController {
 }
 ```
 
-- If you have the situation described above, but have properties that need to be initialized, also create helper methods following the designated/conveince intiazlier type pattern like so.
+- If you have the situation described above, but have properties that need to be initialized, also create helper methods following the designated/convenience initializer type pattern like so.
 
 ```swift
 class func masterInstanceWithId(id: Int) -> MasterViewController {
-        var masterViewController = newInstance()
+        let masterViewController = newInstance()
         masterViewController.id = id
         return masterViewController
-    }
+}
 ```
 
 #### UIView
