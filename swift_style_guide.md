@@ -60,6 +60,21 @@ default:
 }
 ```
 
+- If you have a default case that shouldn't be reached, use an assert.
+
+```swift
+var test = "Hello"
+
+switch test {
+case "Hello"
+    print("It prints")
+case "World"
+    print("It doesn't")
+default:
+    assert(false, "Useful message for developer")
+}
+```
+
 #### Properties
 - If making a read-only computed variable, provide the getter without the get {} around it:
 
