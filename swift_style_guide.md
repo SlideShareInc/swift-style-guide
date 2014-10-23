@@ -324,7 +324,7 @@ if shouldBeA {
 ```
 
 - When declaring and setting a variable/constant of an enum type, do so in the following manner.
-- 
+
 ```swift
 var testValue: TestEnum = .A
 ```
