@@ -10,7 +10,6 @@ This is the SlideShare Swift Style Guide we are using for our upcoming iOS 8 onl
 * [Closures](#closures)
 * [Identifiers](#identifiers)
 * [Singleton](#singleton)
-* [Collections](#collections)
 * [Optionals](#optionals)
 * [Strings](#strings)
 * [Enums](#enums)
@@ -143,7 +142,7 @@ class Test {
     Reasoning: When class constants are supported, the way the constant is accessed will not change.
 
 #### Closures
-- Do not use parameters when declaring parameter names to use in a closure. Also, keep parameter names on same line as opening brace for closures:
+- Do not use parameter types when declaring parameter names to use in a closure. Also, keep parameter names on same line as opening brace for closures:
 
 ```swift
 doSomethingWithCompletion() { param1 in
@@ -177,7 +176,7 @@ testMethod(param: 2.5,
       })
 ```
 
-- Use trailing closure syntax also if a closure is the only parameter:
+- Use trailing closure syntax if a closure is the only parameter:
 
 ```swift
 array1.map { /* content */ }
@@ -259,7 +258,7 @@ class TestClass {
 }
 ```
 
-- To declare a set of constant variables not be used for switching, use a struct:
+- To declare a set of constants not be used for switching, use a struct:
 
 ```swift
 struct Constants {
@@ -281,19 +280,10 @@ class ClassA {
     }
 }
 ```
-
-#### Collections
-- When appending to a collection, always use the append method instead of the += operator.
-
-```swift
-var array = [1, 2, 3]
-array.append(4)
-```
-
-    Reasoning: The += operator will not append single elements.
+	Note: Xcode currently (6.0.1) does not indent properly in this case. Use the indentation specified above.
 
 #### Optionals
-- When unwrapping optionals, rebind the optional to the same name, unless there is a reason not to. This is example shows this, but in this case it should be done within the binding.
+- When unwrapping optionals, rebind the optional to the same name, unless there is a reason not to. This example shows this, but in this case it should be done within the binding.
 
 ```swift
 func possibleBike() -> Bike? {
@@ -333,6 +323,12 @@ if shouldBeA {
 }
 ```
 
+- When declaring and setting a variable/constant of an enum type, do so in the following manner.
+- 
+```swift
+var testValue: TestEnum = .A
+```
+
 #### Documentation
 - When documenting a method, use /// if it is only a single line
 
@@ -364,7 +360,6 @@ Note: Make sure to test your documentation by checking it's Quick Documentation 
 This method has parameters and a return type.
 
 :param: input This is an input parameter.
-
 :returns: True if it worked; false otherwise.
 */
 func foo3(input: String) -> Bool {
@@ -439,10 +434,14 @@ extension Test: NewProtocol {
 ```
 
 #### Protocols
-- Do not use @objc in front of a protocol unless you need to specify optional methods. There may be cases where class will need to be added to the protocol definition to avoid use of @objc as in the example below:
+- Unfortunately, due to a bug in Swift, you should use @objc in front of any protocols that will be declared as a weak variable. Ideally, when this bug is fixed, use class instead unless optional methods are needed:
 
 ```swift
-protocol NewProtocol: class {
+protocol IdealProtocolForWeak: class {
+	// content
+}
+
+@objc protocol NewProtocol {
     // content
 }
 
