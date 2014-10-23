@@ -2,7 +2,7 @@ Official SlideShare Cocoa/Swift Style Guide
 ===========================
 This is the SlideShare Cocoa/Swift Style Guide we are using for our iOS 8 only app written in Swift. Please feel free to submit pull requests, so that this may be helpful for anyone else using Swift. This document lays out our conventions for using Swift with the Cocoa APIs for iOS.
 
-You can download the app at http://lnkd.in/ssios
+*You can download the app at http://lnkd.in/ssios*
 
 ### Table Of Contents
 
