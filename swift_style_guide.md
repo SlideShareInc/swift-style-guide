@@ -2,7 +2,7 @@ Official SlideShare Swift Style Guide
 ===========================
 This is the SlideShare Swift Style Guide we are using for our upcoming iOS 8 only app written in Swift. Please feel free to submit pull requests, so that this may be helpful for anyone else using Swift.
 
-You can download the app at http://lnkd.in/ssios
+*You can download the app at http://lnkd.in/ssios*
 
 ### Table Of Contents
 
