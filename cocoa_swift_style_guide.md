@@ -2,6 +2,8 @@ Official SlideShare Cocoa/Swift Style Guide
 ===========================
 This is the SlideShare Cocoa/Swift Style Guide we are using for our iOS 8 only app written in Swift. Please feel free to submit pull requests, so that this may be helpful for anyone else using Swift. This document lays out our conventions for using Swift with the Cocoa APIs for iOS.
 
+You can download the app at http://lnkd.in/ssios
+
 ### Table Of Contents
 
 * [UITableView](#uitableview)
@@ -17,13 +19,13 @@ This is the SlideShare Cocoa/Swift Style Guide we are using for our iOS 8 only a
 
 
 #### UITableView
-- In a UITableViewCell subclass, create a read-only computed property for the reuse identifier for the cell.
+- In a UITableViewCell subclass, create a read-only computed property for the reuse identifier for the cell. Use camel case with first letter uppercase, because it is a constant.
 
     *Note: Since Swift doesn't yet support stored class properties, that is why we use a read-only computed property for now.*
 
 ```swift
 class TableViewCell: UITableViewCell {
-    class var reuseIdentifier: String {
+    class var ReuseIdentifier: String {
         return "TableViewCell"
     }
 }
@@ -36,7 +38,7 @@ class TableViewCell: UITableViewCell {
 
 ```swift
 class TableViewCell: UITableViewCell {
-    class var nibName: String {
+    class var NibName: String {
         return "TableViewCell"
     }
 }
@@ -118,7 +120,7 @@ class func newInstance() -> MasterViewController {
 - If you have the situation described above, but have properties that need to be initialized, also create helper methods following the designated/convenience initializer type pattern like so.
 
 ```swift
-class func masterInstanceWithId(id: Int) -> MasterViewController {
+class func newInstanceWithId(id: Int) -> MasterViewController {
         let masterViewController = newInstance()
         masterViewController.id = id
         return masterViewController
@@ -131,7 +133,7 @@ class func masterInstanceWithId(id: Int) -> MasterViewController {
 ```swift
 class CustomView: UIView {
 
-    class var nibName: String {
+    class var NibName: String {
         return "CustomView"
     }
 
