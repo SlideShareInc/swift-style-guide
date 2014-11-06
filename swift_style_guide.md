@@ -306,6 +306,8 @@ var newString = "Hello"
 newString += " world!"
 ```
 
+*Note: do not concatenate user-facing strings as the ordering could change in different languages.*
+
 #### Enums
 - When using an enum, always prefer the shorthand syntax when possible. The shorthand syntax should be possible whenever the type does not need to be inferred from the assigned value. Note: there are certain bugs that don't allow them to be used everywhere they should be possible.
 
