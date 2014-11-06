@@ -109,10 +109,10 @@ var zeroRect = CGRect.zeroRect
 ```
 
 #### View Controllers
-- If the view controller is associated with a Storyboard, create a class method named newInstance to return an initialized instance of the view controller from the Storyboard.
+- If the view controller is associated with a Storyboard, create a class method named createInstance to return an initialized instance of the view controller from the Storyboard.
 
 ```swift
-class func newInstance() -> MasterViewController {
+class func createInstance() -> MasterViewController {
     return UIStoryboard.initialControllerFromStoryboard("Master") as MasterViewController
 }
 ```
@@ -120,15 +120,15 @@ class func newInstance() -> MasterViewController {
 - If you have the situation described above, but have properties that need to be initialized, also create helper methods following the designated/convenience initializer type pattern like so.
 
 ```swift
-class func newInstanceWithId(id: Int) -> MasterViewController {
-        let masterViewController = newInstance()
+class func createInstanceWithId(id: Int) -> MasterViewController {
+        let masterViewController = createInstance()
         masterViewController.id = id
         return masterViewController
 }
 ```
 
 #### UIView
-- If you have a class that inherits from UIView and has a XIB file where it is layed out, create a class method named newInstance similar to the example in the View Controllers section.
+- If you have a class that inherits from UIView and has a XIB file where it is layed out, create a class method named createInstance similar to the example in the View Controllers section.
 
 ```swift
 class CustomView: UIView {
@@ -137,7 +137,7 @@ class CustomView: UIView {
         return "CustomView"
     }
 
-    class func newInstance() -> CustomView {
+    class func createInstance() -> CustomView {
         return NSBundle.mainBundle().loadNibNamed(nibName, owner: nil, options: nil)[0] as CustomView
     }
 }
