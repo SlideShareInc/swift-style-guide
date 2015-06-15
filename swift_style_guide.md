@@ -97,7 +97,7 @@ var computedProp: String {
           }
     }
     set {
-          println(newValue)
+		println(newValue)
     }
 }
 ```
@@ -132,16 +132,13 @@ var property = 10 {
 }
 ```
 
-- Class constants are currently not supported, therefore, if you need that functionality, make it a computed variable:
+- Create class constants as static for any strings or constant values.
 
 ```swift
 class Test {
-    class var ConstantValue: String {
-        return "TestString"
-    }
+    static let ConstantValue: String = "TestString"
 }
 ```
-    Reasoning: When class constants are supported, the way the constant is accessed will not change.
 
 #### Closures
 - Do not use parameter types when declaring parameter names to use in a closure. Also, keep parameter names on same line as opening brace for closures:
@@ -243,7 +240,7 @@ class Test {
 - If declaring a variable with its type, place the colon directly after the identifier with a space and then the type:
 
 ```swift
-class var testVar: String
+static var testVar: String
 ```
 
 - When declaring dictionary types, include a space before the key type and after the colon:
