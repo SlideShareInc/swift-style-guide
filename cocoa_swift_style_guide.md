@@ -6,7 +6,8 @@ This is the SlideShare Cocoa/Swift Style Guide we are using for our iOS 8 only a
 
 ### Table Of Contents
 
-* [UITableView](#uitableview)
+* [Protocols](#protocols)
+* [UITableView/UICollectionVIew](#uitableview/uicollectionview)
 * [Strings](#strings)
 * [NSNotification](#nsnotification)
 * [App Delegate](#app-delegate)
@@ -17,32 +18,26 @@ This is the SlideShare Cocoa/Swift Style Guide we are using for our iOS 8 only a
 
 ---
 
-
-#### UITableView
-- In a UITableViewCell subclass, create a read-only computed property for the reuse identifier for the cell. Use camel case with first letter uppercase, because it is a constant.
-
-    *Note: Since Swift doesn't yet support stored class properties, that is why we use a read-only computed property for now.*
+#### Protocols
+- The ReusableView Protocol should be used by any view used by a UICollectionView or UITableView that needs a reuse identifier. You will see how this is used in the UITableView section.
 
 ```swift
-class TableViewCell: UITableViewCell {
-    class var ReuseIdentifier: String {
-        return "TableViewCell"
-    }
+procotol ReusableView {
+    static var ReuseIdentifier: String { get }
+    static var NibName: String { get }
 }
 ```
-> **Reasoning**: We are using this as the temporary solution as class stored properties are not yet supported, because the interface will be the same when that feature is available. Also, once it is supported we would like to create a protocol that has the reuseIdentifier property in it, so that we can just make an extension on UITableViewCell to implement that protocol, so that all UITableViewCell subclasses will need to have it.
 
-- Similar to example above, in a UITableViewCell subclass, create a read-only computed property for the NIB name for the cell.
-
-    *Note: See above explanation for why it is a read-only computed property.*
+#### UITableView/UICollectionView
+- In a UITableViewCell/UICollectionViewCell subclass, create a read-only computed property for the reuse identifier for the cell. Use camel case with first letter uppercase, because it is a constant. **Note**: Please use the protocol listed in the conformance.
 
 ```swift
-class TableViewCell: UITableViewCell {
-    class var NibName: String {
-        return "TableViewCell"
-    }
+class TableViewCell: UITableViewCell, ReusableView {
+    static let ReuseIdentifier: String = "TableViewCellIdentifier"
+    static let NibName: String = "CustomTableViewCell"
 }
 ```
+> **Reasoning**: When registering cells for reuse in a UITableView or UICollectionView, you need the nib name to load the nib and the reuse identifier.
 
 #### Strings
 - Put any user-facing string in the Localizable.strings file with a key in snake case. Use NSLocalizedString when accessing the strings in code.
@@ -57,7 +52,7 @@ var userFacing = NSLocalizedString("user_facing_string_key", comment: "")
 ```
 
 #### NSNotification
-- Name notifications in reverse domain format with the notification name in snake case
+- Name notifications in reverse domain format with the notification name in snake case.
 
 ```swift
 com.linkedin.slideshare.notification_name
@@ -70,13 +65,23 @@ struct GlobalNotifications {
     static let ABC = ""
 }
 ```
+
+- Create notification handlers as lazy closures.
+
+```swift
+private lazy var handleNotification: (NSNotification!) -> Void { [weak self] notification in
+    // Handle the notification
+}
+```
+> **Reasoning**: This way you can define capture semantics for self and also use the identifier as the selector in the addObserver method (see below) instead of a string. This gives you the safety of the compiler.
+
 - Create a registerNotifications() method and deregisterNotifications().
 
 ```swift
 func registerNotifications() {
     let notificationCenter = NSNotificationCenter.defaultCenter()
 
-    notificationCenter.addObserver(self, selector: "handleNotificationABC:", name: GlobalNotifications.ABC, object: nil)
+    notificationCenter.addObserver(self, selector: handleNotificationABC, name: GlobalNotifications.ABC, object: nil)
 }
 
 func deregisterNotifications() {
@@ -113,7 +118,7 @@ var zeroRect = CGRect.zeroRect
 
 ```swift
 class func createInstance() -> MasterViewController {
-    return UIStoryboard.initialControllerFromStoryboard("Master") as MasterViewController
+    return UIStoryboard.initialControllerFromStoryboard("Master") as! MasterViewController
 }
 ```
 
@@ -133,12 +138,10 @@ class func createInstanceWithId(id: Int) -> MasterViewController {
 ```swift
 class CustomView: UIView {
 
-    class var NibName: String {
-        return "CustomView"
-    }
+    private static let NibName: String = "CustomView"
 
-    class func createInstance() -> CustomView {
-        return NSBundle.mainBundle().loadNibNamed(nibName, owner: nil, options: nil)[0] as CustomView
+    static func createInstance() -> CustomView {
+        return NSBundle.mainBundle().loadNibNamed(nibName, owner: nil, options: nil)[0] as! CustomView
     }
 }
 ```
