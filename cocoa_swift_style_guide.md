@@ -7,7 +7,7 @@ This is the SlideShare Cocoa/Swift Style Guide we are using for our iOS 8 only a
 ### Table Of Contents
 
 * [Protocols](#protocols)
-* [UITableView/UICollectionVIew](#uitableview/uicollectionview)
+* [UITableView/UICollectionView](#uitableview)
 * [Strings](#strings)
 * [NSNotification](#nsnotification)
 * [App Delegate](#app-delegate)
@@ -28,7 +28,7 @@ procotol ReusableView {
 }
 ```
 
-#### UITableView/UICollectionView
+#### UITableView & UICollectionView <a id="uitableview"></a>
 - In a UITableViewCell/UICollectionViewCell subclass, create a read-only computed property for the reuse identifier for the cell. Use camel case with first letter uppercase, because it is a constant. **Note**: Please use the protocol listed in the conformance.
 
 ```swift
