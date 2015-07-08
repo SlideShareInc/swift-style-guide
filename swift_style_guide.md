@@ -16,7 +16,6 @@ This is the SlideShare Swift Style Guide we are using for our upcoming iOS 8 onl
 * [Strings](#strings)
 * [Enums](#enums)
 * [Documentation](#documentation)
-* [Protocols](#protocols)
 
 ---
 
@@ -430,33 +429,6 @@ class Test {
 extension Test: NewProtocol {
     func reqMethod() {
         // content
-    }
-}
-```
-
-#### Protocols
-- Unfortunately, due to a bug in Swift, you should use @objc in front of any protocols that will be declared as a weak variable. Ideally, when this bug is fixed, use class instead unless optional methods are needed:
-
-```swift
-protocol IdealProtocolForWeak: class {
-	// content
-}
-
-@objc protocol NewProtocol {
-    // content
-}
-
-@objc protocol OptionalProtocol {
-    func fooReq()
-    optional func fooOpt()
-}
-
-class NewClass: OptionalProtocol {
-	// Cannot declare a struct as weak. Therefore, the type that implements the protocol must be a class
-    weak var delegate: NewProtocol?
-
-    func fooReq() {
-
     }
 }
 ```
