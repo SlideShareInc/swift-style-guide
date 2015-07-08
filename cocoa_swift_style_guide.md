@@ -28,7 +28,8 @@ procotol ReusableView {
 }
 ```
 
-#### UITableView & UICollectionView <a id="uitableview"></a>
+<a id="uitableview"></a>
+#### UITableView & UICollectionView
 - In a UITableViewCell/UICollectionViewCell subclass, create a read-only computed property for the reuse identifier for the cell. Use camel case with first letter uppercase, because it is a constant. **Note**: Please use the protocol listed in the conformance.
 
 ```swift
