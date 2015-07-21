@@ -22,7 +22,7 @@ This is the SlideShare Cocoa/Swift Style Guide we are using for our iOS 8 only a
 - The ReusableView Protocol should be used by any view used by a UICollectionView or UITableView that needs a reuse identifier. You will see how this is used in the UITableView section.
 
 ```swift
-procotol ReusableView {
+protocol ReusableView {
     static var ReuseIdentifier: String { get }
     static var NibName: String { get }
 }
@@ -118,15 +118,16 @@ var zeroRect = CGRect.zeroRect
 - If the view controller is associated with a Storyboard, create a class method named createInstance to return an initialized instance of the view controller from the Storyboard.
 
 ```swift
-class func createInstance() -> MasterViewController {
+static func createInstance() -> MasterViewController {
     return UIStoryboard.initialControllerFromStoryboard("Master") as! MasterViewController
 }
 ```
+> **Reasoning**: Use static if you are not going to make a subclass of this class. If you are going to make a subclass, change it to class func.
 
 - If you have the situation described above, but have properties that need to be initialized, also create helper methods following the designated/convenience initializer type pattern like so.
 
 ```swift
-class func createInstanceWithId(id: Int) -> MasterViewController {
+static func createInstanceWithId(id: Int) -> MasterViewController {
         let masterViewController = createInstance()
         masterViewController.id = id
         return masterViewController
