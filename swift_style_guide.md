@@ -266,16 +266,15 @@ struct Constants {
 ```
 
 #### Singleton
-- Implement a singleton by having this at the top of your class definition:
+- Implement a singleton by having this at the top of your class definition and a private initializer:
 
 ```swift
 class ClassA {
-    class var sharedInstance: ClassA {
-        struct Static {
-            static let instance = ClassA()
-        }
-        return Static.instance
-    }
+	static let sharedInstance: ClassA = ClassA()
+	
+	private init() {
+		// ...
+	}
 }
 ```
 	Note: Xcode currently (6.0.1) does not indent properly in this case. Use the indentation specified above.
