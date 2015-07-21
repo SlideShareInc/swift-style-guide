@@ -152,7 +152,7 @@ doSomethingWithCompletion() { param1 in
 
 ```swift
 // Definition
-func newMethod(input: Int, onComplete methodToRun: (input: Int) -> ()) {
+func newMethod(input: Int, onComplete methodToRun: (input: Int) -> Void) {
     // content
 }
 
@@ -256,7 +256,7 @@ class TestClass {
 }
 ```
 
-- To declare a set of constants not be used for switching, use a struct:
+- To declare a set of constants not to be used for switching, use a struct:
 
 ```swift
 struct Constants {
@@ -270,6 +270,7 @@ struct Constants {
 
 ```swift
 class ClassA {
+
 	static let sharedInstance: ClassA = ClassA()
 	
 	private init() {
