@@ -343,25 +343,25 @@ func foo() {
 
 ```swift
 /**
-This method does something.
-It's very useful.
-*/
+ This method does something.
+ It's very useful.
+ */
 func foo2() {
     // content
 }
 ```
 
-- Use the standard Swift Documentation syntax (reST) in order to enable Quick Documentation. Follow the formatting below, exactly.
+- Use the standard Swift Documentation syntax (reST) in order to enable Quick Documentation. Follow the formatting below, exactly. Using Control+I (Re-indent) should follow this same formatting.
 
 Note: Make sure to test your documentation by checking it's Quick Documentation by option-clicking on the method name.
 
 ```swift
 /**
-This method has parameters and a return type.
+ This method has parameters and a return type.
 
-:param: input This is an input parameter.
-:returns: True if it worked; false otherwise.
-*/
+ - Parameter input: This is an input parameter.
+ - Returns: True if it worked; false otherwise.
+ */
 func foo3(input: String) -> Bool {
     // content
 }
