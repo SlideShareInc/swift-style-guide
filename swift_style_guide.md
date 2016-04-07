@@ -392,7 +392,6 @@ class Stuff {
 
 - The class/struct file layout should be ordered as follows with respect to marks and code organization (Note: See naming convention specified in above note):
 
-        - Section: Singleton
         - Section: Declared Types (Enums, Structs, etc.), Type Aliases
         - Section: Constants
         - Section: Class Properties
