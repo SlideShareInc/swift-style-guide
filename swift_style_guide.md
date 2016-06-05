@@ -54,9 +54,9 @@ var testValue = TestValue()
 
 switch (testValue.value, testValue.detail) {
 case (.A, "Test"):
-    println("This is printed")
+    print("This is printed")
 default:
-    println("This is not printed")
+    print("This is not printed")
 }
 ```
 
@@ -96,7 +96,7 @@ var computedProp: String {
           }
     }
     set {
-		println(newValue)
+		print(newValue)
     }
 }
 ```
@@ -106,10 +106,10 @@ var computedProp: String {
 ```swift
 var property = 10 {
     willSet {
-        println("willSet")
+        print("willSet")
     }
     didSet {
-        println("didSet")
+        print("didSet")
     }
 }
 ```
@@ -120,12 +120,12 @@ var property = 10 {
 var property = 10 {
     willSet {
         if newValue == 10 {
-            println("It’s 10")
+            print("It’s 10")
          }
     }
     didSet {
          if oldValue == 10 {
-               println("It was 10")
+               print("It was 10")
          }
     }
 }
@@ -144,7 +144,7 @@ class Test {
 
 ```swift
 doSomethingWithCompletion() { param1 in
-    println("\(param1)")
+    print("\(param1)")
 }
 ```
 
@@ -158,7 +158,7 @@ func newMethod(input: Int, onComplete methodToRun: (input: Int) -> Void) {
 
 // Usage
 newMethod(10) { param in
-    println("output: \(param)"")
+    print("output: \(param)"")
 }
 ```
 
@@ -167,10 +167,10 @@ newMethod(10) { param in
 ```swift
 testMethod(param: 2.5,
       success: {
-        println("success")
+        print("success")
       },
       failure: {
-        println("failure")
+        print("failure")
       })
 ```
 
@@ -209,7 +209,7 @@ func doEverything() {
         for 1...3 {
             x++
         }
-        println(x)
+        print(x)
     }
     foo(doSomething)
 }
@@ -230,7 +230,7 @@ class Test {
 
     func foo1() {
         foo() {
-            println(self.b)
+            print(self.b)
         }
     }
 }
